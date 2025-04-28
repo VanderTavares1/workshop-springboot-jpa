@@ -1,6 +1,6 @@
 package com.vandertavares.vandin.resources;
 
-import com.vandertavares.vandin.entities.User;
+import com.vandertavares.vandin.entities.UserEntity;
 import com.vandertavares.vandin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,14 +18,14 @@ public class UserResource {
     private UserService service;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
-        List<User> list = service.findAll();
+    public ResponseEntity<List<UserEntity>> findAll() {
+        List<UserEntity> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
-        User obj = service.findById(id);
+    public ResponseEntity<UserEntity> findById(@PathVariable Long id){
+        UserEntity obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 }

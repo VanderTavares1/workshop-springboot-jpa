@@ -1,6 +1,6 @@
 package com.vandertavares.vandin.service;
 
-import com.vandertavares.vandin.entities.User;
+import com.vandertavares.vandin.entities.UserEntity;
 import com.vandertavares.vandin.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public List<User> findAll(){
+    public List<UserEntity> findAll(){
         return repository.findAll();
     }
 
-    public User findById(Long id){
-        Optional<User> obj = repository.findById(id);
+    public UserEntity findById(Long id){
+        Optional<UserEntity> obj = repository.findById(id);
         return obj.get();
     }
 }
