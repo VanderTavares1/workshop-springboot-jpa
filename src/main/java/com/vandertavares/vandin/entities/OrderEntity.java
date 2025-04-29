@@ -11,6 +11,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_order")
 public class OrderEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,7 +40,7 @@ public class OrderEntity implements Serializable {
     }
 
     public void setOrderStatusEnum(OrderStatusEnum orderStatusEnum) {
-        if (orderStatusEnum != null){
+        if (orderStatusEnum != null) {
             this.orderStatusEnum = orderStatusEnum.getCode();
         }
     }

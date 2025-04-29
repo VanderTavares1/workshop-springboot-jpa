@@ -1,8 +1,10 @@
 package com.vandertavares.vandin.config;
 
+import com.vandertavares.vandin.entities.CategoryEntity;
 import com.vandertavares.vandin.entities.OrderEntity;
 import com.vandertavares.vandin.entities.UserEntity;
 import com.vandertavares.vandin.enums.OrderStatusEnum;
+import com.vandertavares.vandin.repositories.CategoryRepository;
 import com.vandertavares.vandin.repositories.OrderRepository;
 import com.vandertavares.vandin.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
         UserEntity u1 = new UserEntity(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
@@ -32,7 +37,12 @@ public class TestConfig implements CommandLineRunner {
         OrderEntity o2 = new OrderEntity(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatusEnum.WAITING_PAYMENT, u2);
         OrderEntity o3 = new OrderEntity(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatusEnum.WAITING_PAYMENT, u1);
 
+        CategoryEntity cat1 = new CategoryEntity(null, "Electronics");
+        CategoryEntity cat2 = new CategoryEntity(null, "Books");
+        CategoryEntity cat3 = new CategoryEntity(null, "Computers");
+
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
     }
 }
