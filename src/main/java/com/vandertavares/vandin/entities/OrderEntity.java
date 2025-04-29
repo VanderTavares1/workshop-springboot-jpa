@@ -1,6 +1,7 @@
 package com.vandertavares.vandin.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.vandertavares.vandin.enums.OrderStatusEnum;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -16,6 +17,8 @@ public class OrderEntity implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
 
+    private Integer orderStatusEnum;
+
     @ManyToOne
     @JoinColumn(name = "client_id")
     private UserEntity client;
@@ -23,11 +26,22 @@ public class OrderEntity implements Serializable {
     public OrderEntity() {
     }
 
-    public OrderEntity(Long id, Instant moment, UserEntity client) {
+    public OrderEntity(Long id, Instant moment, OrderStatusEnum orderStatusEnum, UserEntity client) {
         super();
         this.id = id;
         this.moment = moment;
+        setOrderStatusEnum(orderStatusEnum);
         this.client = client;
+    }
+
+    public OrderStatusEnum getOrderStatusEnum() throws IllegalAccessException {
+        return OrderStatusEnum.valueOf(orderStatusEnum);
+    }
+
+    public void setOrderStatusEnum(OrderStatusEnum orderStatusEnum) {
+        if (orderStatusEnum != null){
+            this.orderStatusEnum = orderStatusEnum.getCode();
+        }
     }
 
     public UserEntity getClient() {
