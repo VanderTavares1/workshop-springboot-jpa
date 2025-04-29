@@ -1,5 +1,6 @@
 package com.vandertavares.vandin.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -8,16 +9,21 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_order")
-public class OrderEntity implements Serializable { @Id
+public class OrderEntity implements Serializable {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
     private UserEntity client;
 
-    public OrderEntity(Long id, Instant moment, UserEntity client){
+    public OrderEntity() {
+    }
+
+    public OrderEntity(Long id, Instant moment, UserEntity client) {
         super();
         this.id = id;
         this.moment = moment;

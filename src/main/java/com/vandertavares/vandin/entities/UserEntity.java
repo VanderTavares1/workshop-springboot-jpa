@@ -1,7 +1,7 @@
 package com.vandertavares.vandin.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.query.Order;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,10 +21,11 @@ public class UserEntity implements Serializable {
     private String phone;
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<OrderEntity> orders = new ArrayList<>();
 
-    public UserEntity(){
+    public UserEntity() {
     }
 
     public UserEntity(Long id, String name, String email, String phone, String password) {

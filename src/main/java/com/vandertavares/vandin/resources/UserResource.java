@@ -23,9 +23,15 @@ public class UserResource {
         return ResponseEntity.ok().body(list);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/id/{id}")
     public ResponseEntity<UserEntity> findById(@PathVariable Long id){
         UserEntity obj = service.findById(id);
+        return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping(value = "/nome/{name}")
+    public ResponseEntity<UserEntity> buscandoNome(@PathVariable String name){
+        UserEntity obj = service.buscandoNome(name);
         return ResponseEntity.ok().body(obj);
     }
 }

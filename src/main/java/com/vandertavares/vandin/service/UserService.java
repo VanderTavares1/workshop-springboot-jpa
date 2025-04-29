@@ -22,4 +22,9 @@ public class UserService {
         Optional<UserEntity> obj = repository.findById(id);
         return obj.get();
     }
+
+    public UserEntity buscandoNome(String name){
+        Optional<UserEntity> obj = repository.findByName(name);
+        return obj.get();
+    }
 }
