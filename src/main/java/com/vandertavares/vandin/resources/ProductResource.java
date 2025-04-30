@@ -1,8 +1,6 @@
 package com.vandertavares.vandin.resources;
 
-import com.vandertavares.vandin.entities.CategoryEntity;
 import com.vandertavares.vandin.entities.ProductEntity;
-import com.vandertavares.vandin.service.CategoryService;
 import com.vandertavares.vandin.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

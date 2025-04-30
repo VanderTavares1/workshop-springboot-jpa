@@ -1,12 +1,16 @@
 package com.vandertavares.vandin.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vandertavares.vandin.pk.OrderItemPK;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import org.aspectj.weaver.ast.Or;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -14,9 +18,11 @@ import java.util.Objects;
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
     private Integer quantity;
     private Double price;
+
+    Set<OrderItem> items = new HashSet<>();
 
     public OrderItem(){
     }
@@ -28,6 +34,7 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public OrderEntity getOrder(){
         return id.getOrderEntity();
     }

@@ -3,9 +3,7 @@ package com.vandertavares.vandin.resources;
 import java.util.List;
 
 import com.vandertavares.vandin.entities.CategoryEntity;
-import com.vandertavares.vandin.entities.OrderEntity;
 import com.vandertavares.vandin.service.CategoryService;
-import com.vandertavares.vandin.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
